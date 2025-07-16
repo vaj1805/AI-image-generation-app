@@ -1,6 +1,6 @@
 import { React, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import {config} from "dotenv";
 import { preview } from '../assets';
 import { getRandomPrompt } from '../utils';
 import { FormField, Loader } from '../components';
@@ -17,9 +17,9 @@ const CreatePost = () => {
     photo: ''
   });
 
-  const generateImage = () => {
+  const generateImage = async () => {
     
-  }
+  } 
 
   const handleSubmit = (e) => {
     e.preventDefault();

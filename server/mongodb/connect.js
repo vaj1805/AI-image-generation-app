@@ -1,5 +1,15 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
+import { config } from "dotenv";
 
-const connect = async () => {
-    await mongoose.connect()
+config();
+
+const connectDB = async () => {
+    try {
+        const conn = await mongoose.connect(process.env.MONGO_URL);  
+    } catch(error) {
+        console.log("Error in connection" , error);
+    }
 }
+
+
+export default connectDB;
