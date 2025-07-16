@@ -17,9 +17,55 @@ const CreatePost = () => {
     photo: ''
   });
 
+  // const generateImage = async () => {
+  //     if(form.prompt) {
+  //       try {
+  //         setGeneratingImg(true);
+  //         const response = await fetch("http://localhost:8080/api/v1/imageapi" , {
+  //           method : 'POST',
+  //           headers : {
+  //             'Content-Type' : 'application/json',
+  //           },
+  //           body : JSON.stringify({prompt : form.prompt}), 
+  //         })
+  //         const data = await response.json();
+
+  //         setForm({...form , photo : `data:image/jpeg;base64,${data.image}`})
+  //       } catch (error) {
+  //         alert(error);
+  //       } finally {
+  //         setGeneratingImg(false);
+  //       }
+  //     } else {
+  //       alert("Please enter a prompt");
+  //     }
+  // } 
+
   const generateImage = async () => {
-    
-  } 
+  if (form.prompt) {
+    try {
+      setGeneratingImg(true);
+      const response = await fetch("http://localhost:8080/api/v1/imageapi", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ prompt: form.prompt }),
+      });
+      const data = await response.json();
+
+      setForm({ ...form, photo: data.image }); // ✅ fixed here
+    } catch (error) {
+      alert(error);
+    } finally {
+      setGeneratingImg(false);
+    }
+  } else {
+    alert("Please enter a prompt");
+  }
+};
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
