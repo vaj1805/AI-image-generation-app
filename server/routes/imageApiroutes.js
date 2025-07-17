@@ -1,35 +1,3 @@
-// import express from 'express';
-// import { textToImage } from '@huggingface/inference';
-
-// const router = express.Router();
-
-
-// router.post('/', async (req, res) => {
-//   const { prompt } = req.body;
-//   if (!prompt) return res.status(400).json({ error: 'Prompt is required.' });
-
-//   try {
-//     const token = "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"
-//     const imageBuffer = await textToImage({
-//       token,
-//       model: "stabilityai/stable-diffusion-xl-base-1.0",
-//       inputs: prompt,
-//       options: { wait_for_model: true }
-//     });
-
-//     // Convert Buffer to base64 string
-//     const base64Image = `data:image/jpeg;base64,${imageBuffer.toString('base64')}`;
-//     res.status(200).json({ image: base64Image });
-//   } catch (err) {
-//     console.error("❌ Generation failed:", err.message);
-//     res.status(500).json({ error: err.message });
-//   }
-// });
-
-// export default router;
-
-
-
 import express from 'express';
 import fetch from 'node-fetch'; 
 import dotenv from "dotenv";
